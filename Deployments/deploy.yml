@@ -23,7 +23,7 @@ spec:
       terminationGracePeriodSeconds: 1
       containers:
       - name: hello-pod
-        image: 
+        image: ravpawarakslearn.azurecr.io/aks-learn:v1.0
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

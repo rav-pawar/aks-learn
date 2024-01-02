@@ -7,6 +7,6 @@ metadata:
 spec:
   containers:
     - name: web-ctr
-      image: ?
+      image: ravpawarakslearn.azurecr.io/aks-learn:v1.0
       ports:
         - containerPort: 8080
