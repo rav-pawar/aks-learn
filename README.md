@@ -19,5 +19,5 @@ az acr repository list --name ravpawarakslearn --output table
 
 ```
 
-To get username and password for Azure Container Registry
+## To get username and password for Azure Container Registry
 ![To get username and password for Azure Container Registry](acr-access-keys.png)
