@@ -55,4 +55,8 @@ kubectl apply -f deploy.yml
 
 kubectl delete deployment web-deploy # to abort
 
+cd aks-learn/Services/
+
+kubectl apply -f svc-lb.yml
+
 ```
