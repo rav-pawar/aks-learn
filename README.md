@@ -60,6 +60,17 @@ cd aks-learn/Services/
 kubectl apply -f svc-lb.yml
 ```
 
+
+```bash
+helm install my-nginx-ingress oci://ghcr.io/nginxinc/charts/nginx-ingress --version 1.1.0
+
+cd aks-learn/Services/
+
+kubectl apply -f ingress.yml
+```
+
 To get username and password for Azure Container Registry - [Click here](https://portal.azure.com/#@ravpawarhotmail.onmicrosoft.com/resource/subscriptions/130ac2c4-7738-417c-ac84-be52935d892f/resourceGroups/rg-aks-learn/providers/Microsoft.ContainerRegistry/registries/ravpawarakslearn/accessKey)
 ![To get username and password for Azure Container Registry](acr-access-keys.png)
+
+
 
