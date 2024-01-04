@@ -5,9 +5,10 @@ metadata:
   namespace: default
   annotations:
     nginx.ingress.kubernetes.io/service-upstream: "true"
+    nginx.ingress.kubernetes.io/limit-rpm: "5" # not working
 spec:
   rules:
-  - host: "google.com"
+  - host: "rate-limit"
     http:
       paths:
       - path: /
@@ -18,3 +19,6 @@ spec:
             port:
               number: 80
   ingressClassName: nginx
+
+  # add rate limiting
+  # https://docs.nginx.com/nginx-ingress-controller/configuration/ingress-resources/advanced-configuration-with-annotations/#rate-limiting
