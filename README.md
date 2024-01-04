@@ -1,8 +1,9 @@
 ## Pre-requisites
-1. Azure account - Use Visual Studio Enterprise Subscription or [Free Azure account](https://azure.microsoft.com/en-us/free/)
-2. Enable Windows Subsystem for Linux in Add/Remove Windows Features
+1. Azure account - Use [Visual Studio Enterprise Subscription](https://my.visualstudio.com/Subscriptions?mkt=en-us)
+2. Windows Subsystem for Linux - Enable this in "Add/Remove Windows Features"
 2. Docker Desktop - [Download](https://www.docker.com/products/docker-desktop)
 3. Azure CLI - [Download](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) or Run `winget install -e --id Microsoft.AzureCLI`
+4. Helm - https://helm.sh/docs/intro/install/#from-the-binary-releases
 
 ## Create resource group, AKS cluster and Azure Container Registry
 ```bash
