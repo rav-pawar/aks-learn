@@ -1,0 +1,28 @@
+# not working
+apiVersion: k8s.nginx.org/v1 
+kind: Policy 
+metadata: 
+  name: rate-limit-policy 
+spec: 
+  rateLimit: 
+    rate: 1r/m
+    key: test
+    zoneSize: 10M 
+--- 
+apiVersion: k8s.nginx.org/v1 
+kind: VirtualServer 
+metadata: 
+  name: api-vs 
+spec: 
+  ingressClassName: nginx-api 
+  host: rate-limit 
+  policies: 
+  - name: rate-limit-policy 
+  upstreams: 
+  - name: ps-clusterip 
+    service: ps-clusterip 
+    port: 80 
+  routes: 
+  - path: / 
+    action: 
+      pass: ps-clusterip

@@ -4,9 +4,10 @@ metadata:
   name: web-ingress2
   namespace: default
   annotations:
-    nginx.ingress.kubernetes.io/service-upstream: "true"
-    nginx.ingress.kubernetes.io/limit-rpm: "5" # not working
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/limit-rps: "1" # not working
 spec:
+  ingressClassName: nginx
   rules:
   - host: "rate-limit"
     http:
@@ -18,7 +19,3 @@ spec:
             name: ps-clusterip
             port:
               number: 80
-  ingressClassName: nginx
-
-  # add rate limiting
-  # https://docs.nginx.com/nginx-ingress-controller/configuration/ingress-resources/advanced-configuration-with-annotations/#rate-limiting

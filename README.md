@@ -69,7 +69,14 @@ cd aks-learn/Services/
 
 kubectl apply -f ingress.yml
 
- kubectl exec my-nginx-ingress-controller-6744f5cdcb-rchmr -n default -it -- bash -c "cat etc/nginx/nginx.conf"
+ kubectl exec my-nginx-ingress-controller-6744f5cdcb-vh9fb -n default -it -- bash -c "cat etc/nginx/nginx.conf"
+
+
+kubectl logs my-nginx-ingress-controller-6744f5cdcb-vh9fb
+
+kubectl exec my-nginx-ingress-controller-6744f5cdcb-vh9fb -n default -it -- bash -c "cat /var/log/nginx/error.log"
+
+
  
 ```
 
