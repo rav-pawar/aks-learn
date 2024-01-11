@@ -9,11 +9,12 @@
 ```bash
 # https://microsoft.com/devicelogin
 az login --use-device-code
-
 az account set --subscription <sub guid>
 
 az group create --name rg-aks-learn --location southeastasia
 
+kubectl create namespace my-nginx-ingress
+kubectl create namespace my-aks-app
 
 # az aks create --resource-group rg-aks-learn --name aks-learn --node-count 1 --enable-addons monitoring --generate-ssh-keys
 az aks create --resource-group rg-aks-learn --name aks-learn --node-count 1 --enable-addons monitoring --generate-ssh-keys --vm-set-type VirtualMachineScaleSets --node-vm-size standard_ds2
@@ -37,7 +38,10 @@ az acr repository list --name ravpawarakslearn --output table
 az acr repository show-tags --name ravpawarakslearn --repository aks-learn --output table
 
 kubectl delete secret docker-registry acr-secret
-kubectl create secret docker-registry acr-secret --docker-server=ravpawarakslearn.azurecr.io --docker-username=ravpawarakslearn --docker-password=password --docker-email=ravpawar@hotmail.com
+kubectl create -n my-aks-app secret docker-registry acr-secret --docker-server=ravpawarakslearn.azurecr.io --docker-username=ravpawarakslearn --docker-password=password --docker-email=ravpawar@hotmail.com
+
+kubectl get secret acr-secret -o jsonpath="{.data.\.dockerconfigjson}" 
+# decrypt using - www.base64decode.org
 
 ```
 
@@ -60,7 +64,6 @@ kubectl apply -f svc-lb.yml
 # helm install my-nginx-ingress oci://ghcr.io/nginxinc/charts/nginx-ingress --version 1.1.0
 # helm uninstall my-nginx-ingress
 
-kubectl create namespace my-nginx-ingress
 
 helm repo add nginx-stable https://helm.nginx.com/stable
 helm install -n my-nginx-ingress my-nginx-ingress-controller nginx-stable/nginx-ingress
@@ -90,7 +93,6 @@ kubectl delete -f .\ingress2.yml
 
 
 cd aks-learn-app
-kubectl create namespace my-aks-app
 helm uninstall  -n my-aks-app aks-learn-app .
 helm install  -n my-aks-app aks-learn-app .
 helm upgrade  -n my-aks-app aks-learn-app .
