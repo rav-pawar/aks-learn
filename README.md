@@ -59,11 +59,18 @@ kubectl delete deployment web-deploy # to abort
 cd aks-learn/Services/
 
 kubectl apply -f svc-lb.yml
+
 ```
 
 
 ```bash
 helm install my-nginx-ingress oci://ghcr.io/nginxinc/charts/nginx-ingress --version 1.1.0
+helm uninstall my-nginx-ingress
+
+helm repo add nginx-stable https://helm.nginx.com/stable
+helm install my-nginx-ingress-controller nginx-stable/nginx-ingress
+
+
 
 cd aks-learn/Services/
 

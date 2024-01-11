@@ -1,11 +1,17 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: web-ingress2
+  name: web-ingress-helm
   namespace: default
   annotations:
+    nginx.ingress.kubernetes.io/service-upstream: "true" 
     nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/limit-rps: "1" # not working
+    nginx.ingress.kubernetes.io/limit-rps: "1"
+    nginx.ingress.kubernetes.io/limit-connections: "1"
+    nginx.ingress.kubernetes.io/limit-rps-burst: "0"
+  labels:
+    app: web
+    app.kubernetes.io/managed-by: Helm
 spec:
   ingressClassName: nginx
   rules:
@@ -16,6 +22,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: ps-clusterip
+            name: ps-clusterip-helm
             port:
               number: 80

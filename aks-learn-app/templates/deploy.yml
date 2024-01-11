@@ -1,14 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web-deploy
+  name: web-deploy-helm
   labels:
     app: web
+    app.kubernetes.io/managed-by: Helm
 spec:
   selector:
     matchLabels:
       app: web
-  replicas: 5
+  replicas: 1
   minReadySeconds: 5
   strategy:
     type: RollingUpdate
@@ -29,3 +30,6 @@ spec:
         - containerPort: 8080
       imagePullSecrets:
       - name: acr-secret
+
+# Error: INSTALLATION FAILED: Unable to continue with install: Deployment "web-deploy" in namespace "default" exists and cannot be imported into the current release: invalid ownership metadata; label validation error: missing key "app.kubernetes.io/managed-by": must be set to "Helm"; annotation validation error: missing key "meta.helm.s
+
