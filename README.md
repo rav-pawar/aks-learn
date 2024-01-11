@@ -10,9 +10,13 @@
 # https://microsoft.com/devicelogin
 az login --use-device-code
 
+az account set --subscription <sub guid>
+
 az group create --name rg-aks-learn --location southeastasia
 
 az aks create --resource-group rg-aks-learn --name aks-learn --node-count 3 --enable-addons monitoring --generate-ssh-keys
+az aks create --resource-group rg-aks-learn --name aks-learn --node-count 3 --enable-addons monitoring --generate-ssh-keys --vm-set-type VirtualMachineScaleSets --node-vm-size standard_ds2
+
 
 az aks get-credentials --resource-group rg-aks-learn --name aks-learn
 
@@ -71,20 +75,20 @@ helm repo add nginx-stable https://helm.nginx.com/stable
 helm install my-nginx-ingress-controller nginx-stable/nginx-ingress
 
 
-
 cd aks-learn/Services/
 
 kubectl apply -f ingress.yml
-
  kubectl exec my-nginx-ingress-controller-6744f5cdcb-vh9fb -n default -it -- bash -c "cat etc/nginx/nginx.conf"
 
 
 kubectl logs my-nginx-ingress-controller-6744f5cdcb-vh9fb
+kubectl exec my-nginx-ingress-controller-6744f5cdcb-vh9fb -n default -it -- bash -c "cat /var/log/nginx/error.log" 
+```
 
-kubectl exec my-nginx-ingress-controller-6744f5cdcb-vh9fb -n default -it -- bash -c "cat /var/log/nginx/error.log"
+## Misc
+```bash
 
-
- 
+kubectl describe ingressclasses # to get ingress class name - what is ingress class? - https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-class
 ```
 
 
