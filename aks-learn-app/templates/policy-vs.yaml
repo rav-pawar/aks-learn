@@ -1,22 +1,23 @@
 apiVersion: k8s.nginx.org/v1 
 kind: Policy 
 metadata: 
-  name: rate-limit-policy 
+  name: rate-limit-policy-helm
 spec: 
   rateLimit: 
     rate: 1r/s
     key: test
     zoneSize: 10M 
 --- 
+# https://www.youtube.com/watch?v=DbwBg_gkr2c
 apiVersion: k8s.nginx.org/v1 
 kind: VirtualServer 
 metadata: 
-  name: api-vs 
+  name: api-vs-helm
 spec: 
   ingressClassName: nginx 
-  host: aks-learn.southeastasia.cloudapp.azure.com
+  host: "aks-learn.southeastasia.cloudapp.azure.com"
   policies: 
-  - name: rate-limit-policy
+  - name: rate-limit-policy-helm
   upstreams: 
   - name: ps-clusterip-helm 
     service: ps-clusterip-helm 

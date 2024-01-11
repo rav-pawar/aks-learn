@@ -87,6 +87,31 @@ kubectl exec my-nginx-ingress-controller-6744f5cdcb-vh9fb -n default -it -- bash
  
 ```
 
+
+
+## Use helm to deploy application to AKS cluster
+```
+
+cd Deployments
+kubectl delete -f .\deploy.yml
+
+cd Services
+kubectl delete -f .\svc-lb.yml
+
+
+
+cd Ingress
+kubectl delete -f .\policy.yaml
+kubectl delete -f .\ingress.yml
+kubectl delete -f .\ingress2.yml
+
+
+cd aks-learn-app
+helm install aks-learn-app .
+helm upgrade aks-learn-app .
+
+
+```
 To get username and password for Azure Container Registry - [Click here](https://portal.azure.com/#@ravpawarhotmail.onmicrosoft.com/resource/subscriptions/130ac2c4-7738-417c-ac84-be52935d892f/resourceGroups/rg-aks-learn/providers/Microsoft.ContainerRegistry/registries/ravpawarakslearn/accessKey)
 ![To get username and password for Azure Container Registry](acr-access-keys.png)
 
