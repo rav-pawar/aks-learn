@@ -110,6 +110,9 @@ cd aks-learn-app
 helm install aks-learn-app .
 helm upgrade aks-learn-app .
 
+# shtudown cluster
+az aks stop --name aks-learn --resource-group rg-aks-learn
+
 
 ```
 To get username and password for Azure Container Registry - [Click here](https://portal.azure.com/#@ravpawarhotmail.onmicrosoft.com/resource/subscriptions/130ac2c4-7738-417c-ac84-be52935d892f/resourceGroups/rg-aks-learn/providers/Microsoft.ContainerRegistry/registries/ravpawarakslearn/accessKey)
