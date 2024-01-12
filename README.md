@@ -75,7 +75,10 @@ kubectl apply -f ingress.yml
 
 kubectl exec my-nginx-ingress-controller-6744f5cdcb-vh9fb -n default -it -- bash -c "cat etc/nginx/nginx.conf"
 kubectl logs my-nginx-ingress-controller-6744f5cdcb-vh9fb
-kubectl exec my-nginx-ingress-controller-6744f5cdcb-vh9fb -n default -it -- bash -c "cat /var/log/nginx/error.log" 
+kubectl exec my-nginx-ingress-controller-6744f5cdcb-vh9fb -n default -it -- bash -c "cat /var/log/nginx/error.log"
+
+kubectl exec msdx-nginx-ingress-nginx-controller-85bd8b7cbf-xl9qt -n msdx-infra-ingress -it -- bash
+nginx -version
 ```
 
 ## Use helm to deploy application to AKS cluster
