@@ -5,6 +5,15 @@
 3. Azure CLI - [Download](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) or Run `winget install -e --id Microsoft.AzureCLI`
 4. Helm - https://helm.sh/docs/intro/install/#from-the-binary-releases
 
+## Aliasing kubectl
+```bash
+# powershell
+Set-Alias -Name k -Value kubectl
+
+# Mac/Linux
+alias k="kubectl"
+```
+
 ## Create resource group, AKS cluster and Azure Container Registry
 ```bash
 # https://microsoft.com/devicelogin
@@ -59,6 +68,13 @@ kubectl apply -f svc-lb.yml
 ```
 
 
+To get username and password for Azure Container Registry - [Click here](https://portal.azure.com/#@ravpawarhotmail.onmicrosoft.com/resource/subscriptions/130ac2c4-7738-417c-ac84-be52935d892f/resourceGroups/rg-aks-learn/providers/Microsoft.ContainerRegistry/registries/ravpawarakslearn/accessKey)
+![To get username and password for Azure Container Registry](acr-access-keys.png)
+
+
+---
+
+
 # Deploy nginx ingress controller
 ```bash
 # helm install my-nginx-ingress oci://ghcr.io/nginxinc/charts/nginx-ingress --version 1.1.0
@@ -104,9 +120,6 @@ helm upgrade  -n my-aks-app aks-learn-app .
 az aks stop --name aks-learn --resource-group rg-aks-learn
 ```
 
-
-To get username and password for Azure Container Registry - [Click here](https://portal.azure.com/#@ravpawarhotmail.onmicrosoft.com/resource/subscriptions/130ac2c4-7738-417c-ac84-be52935d892f/resourceGroups/rg-aks-learn/providers/Microsoft.ContainerRegistry/registries/ravpawarakslearn/accessKey)
-![To get username and password for Azure Container Registry](acr-access-keys.png)
 
 
 ## Misc
