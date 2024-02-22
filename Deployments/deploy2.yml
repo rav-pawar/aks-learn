@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web-deploy
+  name: web-deploy2
   labels:
-    app: web
+    app: web2
 spec:
   selector:
     matchLabels:
-      app: web
-  replicas: 5
+      app: web2
+  replicas: 2
   minReadySeconds: 5
   strategy:
     type: RollingUpdate
@@ -18,12 +18,12 @@ spec:
   template:
     metadata:
       labels:
-        app: web
+        app: web2
     spec: 
       terminationGracePeriodSeconds: 1
       containers:
-      - name: hello-pod
-        image: ravpawarakslearn.azurecr.io/aks-learn:v1.0
+      - name: hello-pod2
+        image: ravpawarakslearn.azurecr.io/aks-learn:v2.0
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

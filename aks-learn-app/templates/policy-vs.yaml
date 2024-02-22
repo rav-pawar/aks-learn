@@ -15,7 +15,7 @@ metadata:
   name: api-vs-helm
 spec: 
   ingressClassName: nginx 
-  host: "aks-learn.southeastasia.cloudapp.azure.com"
+  host: "vs"
   policies: 
   - name: rate-limit-policy-helm
   upstreams: 
